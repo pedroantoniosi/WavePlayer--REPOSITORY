@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wave MP3 Music Player Portifolio Website</title>
+    <link rel="stylesheet" href="/assets/scss/style.css">
+</head>
+
+<body class="col">
+    <nav class="navbar" style="width: fit-content;">
+        <ul class="navbar-nav row gap-1 align-center">
+            <button onclick="section1()">
+                <li class="navlink active">Home</li>
+            </button>
+            <button>
+                <li class="navlink">Download</li>
+            </button>
+            <button>
+                <li class="navlink">Features</li>
+            </button>
+            <button>
+                <li class="navlink">Blog</li>
+            </button>
+            <button>
+                <li class="navlink">Portifolio</li>
+            </button>
+        </ul>
+    </nav>
+
+    <main>
+        <heroComponent></heroComponent>
+        <aboutComponent></aboutComponent>
+        <interfaceComponent></interfaceComponent>
+        <featuresComponent></featuresComponent>
+        <donateComponent></donateComponent>
+        <downloadComponent></downloadComponent>
+    </main>
+
+
+    <!-- ------------------------------------------------------------------------------------------------------------------------------------------------ -->
+    <div id="footer">
+
+    </div>
+
+    <script src="./assets/js/app.js"></script>
+    <script src="./assets/js/components/heroComponent.js"></script>
+    <script src="./assets/js/components/aboutComponent.js"></script>
+    <script src="./assets/js/components/interfaceComponent.js"></script>
+    <script src="./assets/js/components/featuresComponent.js"></script>
+    <script src="./assets/js/components/donateComponent.js"></script>
+    <script src="./assets/js/components/downloadComponent.js"></script>
+</body>
+
+</html>

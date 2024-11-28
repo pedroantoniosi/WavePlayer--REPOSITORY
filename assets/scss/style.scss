@@ -1,0 +1,425 @@
+@import url('/assets/scss/reset/reset.css');
+
+$primaryColor: #64ceee;
+$secondaryColor: #142020;
+$accentColor: #000d12;
+$light: #fff;
+$dark: #000;
+
+
+@mixin pseudo-before() {
+    position: relative;
+    z-index: 1;
+
+    &::before {
+        content: ' ';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        bottom: 0;
+        z-index: -1;
+    }
+}
+
+@mixin pseudo-after() {
+    position: relative;
+    z-index: 1;
+
+    &::after {
+        content: ' ';
+        position: absolute;
+        width: 100%;
+        height: 50%;
+        left: 0;
+        bottom: 0;
+        z-index: -2;
+    }
+}
+
+@mixin title-style() {
+    padding: 1rem 0;
+    width: fit-content;
+    @include pseudo-before();
+    text-transform: uppercase;
+    font-size: 2rem;
+
+    &::before {
+        background-color: $primaryColor;
+        width: 100px;
+        height: 5px;
+    }
+}
+
+body {
+    background-color: $accentColor;
+    color: $light;
+}
+
+.btn-download {
+    max-width: 300px;
+    width: 100%;
+    padding: 1rem;
+    background-color: $light;
+    color: $dark;
+    text-align: center;
+    border-radius: 20rem;
+    border: .15rem solid transparent;
+
+    &:hover {
+        background-color: transparent;
+        border-color: $light;
+        color: $light;
+    }
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, $primaryColor, #75c8ff, #5d88ff); /* Gradiente horizontal */
+    -webkit-background-clip: text; /* Aplica o gradiente apenas ao texto */
+    -webkit-text-fill-color: transparent; /* Faz o fundo do texto transparente */
+}
+
+.pdef{
+    padding: .5rem;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1400px;
+}
+
+.navbar{
+    padding: .5rem;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 3rem;
+    background-color: #323036;
+    border-radius: .6rem;
+    z-index: 9;
+    &-nav{
+        & .navlink{
+            padding: .5rem;
+            cursor: pointer;
+            color: $light;
+            border-radius: .6rem;
+            font-weight: 400;
+            color: #a3a3a3;
+            transition: all  .1s linear;
+            &:hover{
+                color: $light;
+            }
+            &.active{
+                background-color: $primaryColor;
+                color: $light;
+                font-weight: 600;
+            }
+        }
+    }
+}
+
+.hero__ct {
+    height: 100dvh;
+    @include pseudo-before();
+
+    &::before {
+        // background-image: url('/assets/img/banner/banner.gif');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    &::after {
+        content: ' ';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        bottom: 0;
+        background-image: linear-gradient(transparent 0%, $dark 100%);
+        z-index: -1;
+    }
+
+    &--caption {
+        color: $light;
+
+        & .title {
+            font-size: max(3rem, 6vw);
+            text-transform: uppercase;
+        }
+
+        & .text {
+            text-transform: uppercase;
+            font-size: 1.2rem;
+        }
+    }
+}
+
+.about__ct {
+    background-color: $dark;
+    @include pseudo-before();
+
+    &::before {
+        background-image: linear-gradient($dark 80%, $accentColor 100%)
+    }
+
+    & .caption {
+        & .title {
+            @include title-style();
+            font-size: max(2rem, 3vw);
+        }
+    }
+
+    & .cards {
+        & .card {
+            display: grid;
+            place-items: center;
+            @include pseudo-before();
+            padding: 2rem;
+            border-radius: .5rem;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            box-shadow: rgba(255, 255, 255, 0.2) 0px 2px 8px 0px;
+            &:nth-of-type(2),
+            &:nth-of-type(3) {
+                &::before {
+                    background-image: linear-gradient(transparent 0%, $primaryColor 150%);
+                }
+            }
+
+            &:nth-of-type(1),
+            &:nth-of-type(4) {
+                background-image: linear-gradient(transparent 0%, #222 150%);
+            }
+        }
+
+    }
+}
+
+
+.features__ct{
+& .parent {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 400px;
+    gap: 2rem;
+
+    & .card {
+        @include pseudo-before();
+        padding: 1rem;
+        border-radius: .5rem;
+        overflow: hidden;
+        box-shadow: rgba(0, 142, 174, 0.238) 0px 5px 15px;
+        gap: 2rem;
+        & .title {
+            text-transform: uppercase;
+            font-size: max(2rem, 3vw);
+        }
+        & .text{
+            font-size: .8rem;
+        }
+    }
+
+    & .div1 {
+        &::before{
+            background-image: url('/assets/img/features/headphone.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: left;
+            opacity: .7;
+        }
+    }
+
+    & .div2 {
+        &::before{
+            background-image: url('/assets/img/features/audio.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: left;
+            opacity: .5;
+        }
+    }
+
+    & .div3 {
+        &::before{
+            background-image: url('/assets/img/features/cart.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: left;
+            opacity: .5;
+        }
+    }
+}
+}
+
+.interface__ct{
+    &  .caption .title{
+        writing-mode: vertical-rl; /* Texto de cima para baixo, da direita para a esquerda */
+        text-orientation: upright;
+
+    }
+    & .responsive-picture img {
+        min-width: 100%;
+        height: 60svh;
+    }
+}
+
+.donate_ct {
+& .title{
+    font-size: max(2rem, 4vw);
+}
+}
+
+.download__ct{
+    display: grid;
+    place-items: center;
+    @include pseudo-before();
+
+    &::before{
+        background: rgb(34,193,195);
+        background: linear-gradient(180deg, $accentColor 0%, $dark 100%);
+    }
+    & .title{
+        font-size: max(2rem, 4vw);
+        text-transform: uppercase;
+        text-align: unset;
+    }
+    & .sub__title{
+        font-size: max(1.5rem, 2vw);
+    }
+    & .list__ct{
+        & .list__link{
+            color: $primaryColor;
+        }
+    }
+}
+
+@media (min-width: 769px){
+    .navbar{
+        padding: 1rem;
+        position: fixed;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 3rem;
+        background-color: #323036;
+        border-radius: .6rem;
+        z-index: 9;
+        &-nav{
+            & .navlink{
+                cursor: pointer;
+                padding: .8rem 1rem;
+                color: $light;
+                border-radius: .6rem;
+                font-weight: 400;
+                color: #a3a3a3;
+                transition: all  .1s linear;
+                &:hover{
+                    color: $light;
+                }
+                &.active{
+                    background-color: $primaryColor;
+                    color: $light;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1023px){
+    .interface__ct{
+        &  .caption .title{
+            writing-mode: vertical-rl; /* Texto de cima para baixo, da direita para a esquerda */
+            text-orientation: upright;
+            font-size: 3rem;
+        }
+        & .responsive-picture img {
+            height: 80svh;
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    .pdef{
+        padding: 4rem 2rem;
+    }
+
+    .about__ct{
+        & .caption .text{
+            max-width: 992px;
+        }
+    }
+
+    .features__ct{
+        & .parent {
+            display: grid;
+            grid-template-columns: 8fr 12fr;
+            grid-template-rows: 400px 300px;
+            gap: 4rem;
+        
+            & .card {
+                @include pseudo-before();
+                padding: 1rem;
+                border-radius: .5rem;
+                overflow: hidden;
+                box-shadow: rgba(0, 142, 174, 0.238) 0px 5px 15px;
+                & .title {
+                    text-transform: uppercase;
+                    font-size: 2rem;
+                }
+                & .text{
+                    font-size: .8rem;
+                }
+            }
+        
+            & .div1 {
+                grid-row: span 2 / span 2;
+                &::before{
+                    background-image: url('/assets/img/features/headphone.jpg');
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-position: left;
+                    opacity: .7;
+                }
+            }
+        
+            & .div2 {
+                &::before{
+                    background-image: url('/assets/img/features/audio.jpg');
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-position: left;
+                    opacity: .5;
+                }
+            }
+        
+            & .div3 {
+                grid-column-start: 2;
+                &::before{
+                    background-image: url('/assets/img/features/cart.jpg');
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-position: left;
+                    opacity: .5;
+                }
+            }
+        }
+        }
+
+    .download__ct{
+        & .title{
+            text-align: center;
+        }
+    }
+    
+    .interface__ct{
+        &  .caption .title{
+            writing-mode: unset; /* Texto de cima para baixo, da direita para a esquerda */
+            text-orientation: unset;
+            font-size: max(2rem, 3vw);
+        }
+        & .responsive-picture img {
+            height: 60svh;
+        }
+    }
+}
+
