@@ -1,6 +1,10 @@
-function createFeaturesTemplate(){
-    return `
-            <section class="features__ct pdef">
+
+
+
+export class featuresComponent extends HTMLElement {
+    connectedCallback() {
+        this.innerHTML = `
+            <section class="features__ct pdef" id="features">
             <div class="parent container">
                 <div class="div1 card col justify-start">
                     <h2 class="title text-center">User-Friendly and Customizable Interface</h2>
@@ -15,16 +19,8 @@ function createFeaturesTemplate(){
                 </div>
             </div>
         </section>
-    `
+        `;
+    }
 }
 
-function renderFeaturesComponent(){
-    const featuresTags = document.querySelectorAll('featuresComponent')
-
-    featuresTags.forEach((featuresTag => {
-        const featuresComponent = document.createElement('section')
-        featuresComponent.classList.add('features-container')
-        featuresComponent.innerHTML = createFeaturesTemplate()
-        featuresTag.replaceWith(featuresComponent);
-    }))
-}renderFeaturesComponent()
+customElements.define('features-component', featuresComponent);

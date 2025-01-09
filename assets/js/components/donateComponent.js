@@ -1,21 +1,17 @@
-function createDonateTemplate(){
-    return `
-      <section class="donate_ct col gap-5 justify-center pdef" style="height: 100svh;">
-            <h4 class="title text-center">
+export class donateComponent extends HTMLElement {
+    connectedCallback() {
+        this.innerHTML = `
+      <section class="donate-ct py-2">
+        <div class="container col gap-4 justify-center">
+                   <h2 class="title text-center">
                 <span class="gradient-text text-capitalize">Donate</span> and <span class="gradient-text text-capitalize">contribute</span><br>to support us
-            </h4>
-            <div class="row m-auto"><img src="./assets/img/apps/gofundme.png" alt="" style="max-width: 200px;"></div>
-            <a href="" class="btn-download m-auto">Donate Now</a>
+            </h2>
+            <div class="row m-auto"><img src="./assets/img/apps/gofundme.png" alt="" style="max-width: 300px;"></div>
+            <a href="https://www.gofundme.com/" class="btn-download m-auto">Donate Now</a>
         </section>
-    `
+        </div>
+        `;
+    }
 }
 
-function renderDonateComponent(){
-    const donateTags = document.querySelectorAll('donateComponent')
-    donateTags.forEach((donateTag)=>{
-    const donateComponent = document.createElement('section')
-    donateComponent.classList.add('donate-container')
-    donateComponent.innerHTML = createDonateTemplate()
-    donateTag.replaceWith(donateComponent)
-    })
-}renderDonateComponent()
+customElements.define('donate-component', donateComponent);

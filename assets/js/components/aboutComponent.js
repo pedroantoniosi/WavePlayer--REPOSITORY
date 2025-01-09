@@ -1,6 +1,7 @@
-function createAboutTemplate(){
-    return `
-            <div class="about__ct d-grid place-center pdef">
+export class aboutComponent extends HTMLElement {
+    connectedCallback() {
+        this.innerHTML = `
+            <section class="about__ct d-grid place-center pdef">
             <div class="container row-xl justify-center gap-4">
                 <div class="caption col gap-2 justify-center">
                     <h2 class="title py-1">welcome to wave media player</h2>
@@ -26,16 +27,9 @@ function createAboutTemplate(){
                     </div>
                 </div>
             </div>
-        </div>
-    `
+        </section>
+        `;
+    }
 }
 
-function renderAboutComponent(){
-    const aboutTags = document.querySelectorAll('aboutComponent')
-    aboutTags.forEach((aboutTag) => {
-        const aboutComponent = document.createElement('section');
-        aboutComponent.classList.add('about-container'); 
-        aboutComponent.innerHTML = createAboutTemplate();
-        aboutTag.replaceWith(aboutComponent);
-    })
-}renderAboutComponent()
+customElements.define('about-component', aboutComponent);

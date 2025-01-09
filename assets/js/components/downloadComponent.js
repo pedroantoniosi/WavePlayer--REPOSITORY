@@ -1,9 +1,11 @@
-function createDownloadTemplate(){
-    return `
-            <section class="download__ct pdef">
+
+export class downloadComponent extends HTMLElement {
+    connectedCallback() {
+        this.innerHTML = `
+            <section class="download__ct pdef" id="downloads">
             <div class="container w-100">
                 <h2 class="title mb-4"><span class="gradient-text">Baixe o</span> Wave MP3</h2>
-                <div class="row-lg justify-around gap-2 w-100">
+                <div class="row-lg justify-evenly gap-2 w-100">
                     <div class="col">
                         <h3 class="sub__title mb-1">Windows</h3>
                         <ul class="list__ct col gap-05">
@@ -37,15 +39,8 @@ function createDownloadTemplate(){
                 </div>
             </div>
         </section>
-    `
+        `;
+    }
 }
 
-function renderDownloadComponent(){
-    const downloadTags = document.querySelectorAll('downloadComponent')
-    downloadTags.forEach((downloadTag =>{
-    const downloadComponent = document.createElement('section')
-    downloadComponent.classList.add('download-container')
-    downloadComponent.innerHTML = createDownloadTemplate()
-    downloadTag.replaceWith(downloadComponent)
-    }))
-}renderDownloadComponent()
+customElements.define('download-component', downloadComponent);

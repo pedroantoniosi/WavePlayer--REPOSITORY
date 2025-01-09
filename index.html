@@ -4,53 +4,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wave MP3 Music Player Portifolio Website</title>
+    <title>Wave Video Player Portifolio Website</title>
     <link rel="stylesheet" href="/assets/scss/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
 <body class="col">
     <nav class="navbar" style="width: fit-content;">
         <ul class="navbar-nav row gap-1 align-center">
-            <button onclick="section1()">
+            <a href="./index.html">
                 <li class="navlink active">Home</li>
-            </button>
-            <button>
-                <li class="navlink">Download</li>
-            </button>
-            <button>
+            </a>
+            <a href="#interface-component">
+                <li class="navlink">Interface</li>
+            </a>
+            <a href="#features-component">
                 <li class="navlink">Features</li>
-            </button>
-            <button>
-                <li class="navlink">Blog</li>
-            </button>
-            <button>
+            </a>
+            <a href="#donate-component">
+                <li class="navlink">Donate</li>
+            </a>
+            <a href="#download-component">
+                <li class="navlink">
+                    Downloads
+                    <ul class="dropdown">
+                        <li class="droplink">Windows</li>
+                        <li class="droplink">Linux</li>
+                    </ul>
+                </li>
+            </a>
+            <a target="_blank" href="https://github.com/pedroantoniosi/WAVEPLAYER--REPOSITORY">
                 <li class="navlink">Portifolio</li>
-            </button>
+            </a>
         </ul>
     </nav>
 
-    <main>
-        <heroComponent></heroComponent>
-        <aboutComponent></aboutComponent>
-        <interfaceComponent></interfaceComponent>
-        <featuresComponent></featuresComponent>
-        <donateComponent></donateComponent>
-        <downloadComponent></downloadComponent>
-    </main>
 
+
+    <main id="main-component">
+        <hero-component id="hero-component"></hero-component>
+        <about-component id="about-component"></about-component>
+        <interface-component id="interface-component"></interface-component>
+        <features-component id="features-component"></features-component>
+        <donate-component id="donate-component"></donate-component>
+        <!-- <download-component id="download-component"></download-component> -->
+    </main>
 
     <!-- ------------------------------------------------------------------------------------------------------------------------------------------------ -->
     <div id="footer">
 
     </div>
 
-    <script src="./assets/js/app.js"></script>
-    <script src="./assets/js/components/heroComponent.js"></script>
-    <script src="./assets/js/components/aboutComponent.js"></script>
-    <script src="./assets/js/components/interfaceComponent.js"></script>
-    <script src="./assets/js/components/featuresComponent.js"></script>
-    <script src="./assets/js/components/donateComponent.js"></script>
-    <script src="./assets/js/components/downloadComponent.js"></script>
+    <script type="module" src="./assets/js/app.js"></script>
+
 </body>
 
 </html>
